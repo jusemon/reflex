@@ -19,7 +19,7 @@ public class FloorController : MonoBehaviour
         container = new GameObject("Floor Container");
         poolTiles = new List<GameObject>();
         poolTilesInversed = new List<GameObject>();
-        for (int x = 0; x <= pollSize; x++)
+        for (int x = 0; x < pollSize; x++)
         {
             poolTiles.Add(CreateFloorTile(floorTile, x, positionY, Constants.Floor));
             poolTilesInversed.Add(CreateFloorTile(floorTileInversed, x, positionY - 1, Constants.Floor));
@@ -31,8 +31,8 @@ public class FloorController : MonoBehaviour
     {
         for (int i = 0; i < pollSize; i++)
         {
-            UpdateTilePosition(poolTiles[i], positionY);
-            UpdateTilePosition(poolTilesInversed[i], positionY - 1);
+            UpdateTilePosition(poolTiles[i]);
+            UpdateTilePosition(poolTilesInversed[i]);
         }
     }
 
@@ -43,12 +43,12 @@ public class FloorController : MonoBehaviour
         return tile;
     }
 
-    private void UpdateTilePosition(GameObject tile, float posY)
+    private void UpdateTilePosition(GameObject tile)
     {
-        tile.transform.position += Vector3.left * 0.01f * speed;
+        tile.transform.position += Vector3.left * speed / 100;
         if (tile.transform.position.x < -pollSize / 2)
         {
-            tile.transform.position = new Vector3(pollSize / 2, posY, 0);
+            tile.transform.position = new Vector3(pollSize / 2, tile.transform.position.y, 0);
         }
     }
 }
