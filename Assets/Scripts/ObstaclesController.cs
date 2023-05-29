@@ -26,8 +26,8 @@ public class ObstaclesController : MonoBehaviour
         poolInverted = new List<GameObject>();
         for (int i = 0; i < pollSize; i++)
         {
-            pool.AddRange(CreateObstacles(obstacles, i, positionY, Constants.Obstacle));
-            poolInverted.AddRange(CreateObstacles(obstaclesInverted, i, -positionY, Constants.Obstacle));
+            pool.AddRange(CreateObstacles(obstacles, i, positionY));
+            poolInverted.AddRange(CreateObstacles(obstaclesInverted, i, -positionY));
         }
     }
 
@@ -74,13 +74,12 @@ public class ObstaclesController : MonoBehaviour
         }
     }
 
-    private IEnumerable<GameObject> CreateObstacles(List<GameObject> gameObjects, int id, float posY, string tag)
+    private IEnumerable<GameObject> CreateObstacles(List<GameObject> gameObjects, int id, float posY)
     {
         foreach (var gameObject in gameObjects)
         {
             var obstacle = Instantiate(gameObject, new Vector3(positionX, posY), Quaternion.identity, container.transform);
             obstacle.name = $"{gameObject.name}_{id.ToString("00")}";
-            obstacle.tag = tag;
             obstacle.SetActive(false);
             yield return obstacle;
         }

@@ -20,8 +20,8 @@ public class FloorController : MonoBehaviour
         poolTilesInverted = new List<GameObject>();
         for (int x = 0; x < pollSize; x++)
         {
-            poolTiles.Add(CreateFloorTile(floorTile, x, positionY, Constants.Floor));
-            poolTilesInverted.Add(CreateFloorTile(floorTileInverted, x, -positionY, Constants.Floor));
+            poolTiles.Add(CreateFloorTile(floorTile, x, positionY));
+            poolTilesInverted.Add(CreateFloorTile(floorTileInverted, x, -positionY));
         }
     }
 
@@ -34,11 +34,10 @@ public class FloorController : MonoBehaviour
         }
     }
 
-    private GameObject CreateFloorTile(GameObject gameObject, int posX, float posY, string tag)
+    private GameObject CreateFloorTile(GameObject gameObject, int posX, float posY)
     {
         var tile = Instantiate(gameObject, new Vector3(posX - pollSize / 2, posY), Quaternion.identity, container.transform);
         tile.name = $"{gameObject.name}_{posX.ToString("00")}";
-        tile.tag = tag;
         return tile;
     }
 
