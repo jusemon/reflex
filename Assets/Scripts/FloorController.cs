@@ -11,17 +11,17 @@ public class FloorController : MonoBehaviour
 
     private GameObject container;
     private List<GameObject> poolTiles;
-    private List<GameObject> poolTilesInversed;
+    private List<GameObject> poolTilesInverted;
 
     private void Awake()
     {
         container = new GameObject("Floor Container");
         poolTiles = new List<GameObject>();
-        poolTilesInversed = new List<GameObject>();
+        poolTilesInverted = new List<GameObject>();
         for (int x = 0; x < pollSize; x++)
         {
             poolTiles.Add(CreateFloorTile(floorTile, x, positionY, Constants.Floor));
-            poolTilesInversed.Add(CreateFloorTile(floorTileInverted, x, positionY - 1, Constants.Floor));
+            poolTilesInverted.Add(CreateFloorTile(floorTileInverted, x, -positionY, Constants.Floor));
         }
     }
 
@@ -30,7 +30,7 @@ public class FloorController : MonoBehaviour
         for (int i = 0; i < pollSize; i++)
         {
             UpdateTilePosition(poolTiles[i]);
-            UpdateTilePosition(poolTilesInversed[i]);
+            UpdateTilePosition(poolTilesInverted[i]);
         }
     }
 

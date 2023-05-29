@@ -865,8 +865,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b188513ac1938a44ba6b6d298b85d785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles: []
-  obstaclesInverted: []
+  obstacles:
+  - {fileID: 4033195664420976435, guid: be2044b72f0f5b44e986167625c1e37c, type: 3}
+  obstaclesInverted:
+  - {fileID: 5091529333466753783, guid: 7885164358d8d364d984f40eed166544, type: 3}
+  speed: 5
+  positionY: 1.5
+  pollSize: 10
 --- !u!1 &1749328669
 GameObject:
   m_ObjectHideFlags: 0
