@@ -13,8 +13,7 @@ public class FloorController : MonoBehaviour
     private List<GameObject> poolTiles;
     private List<GameObject> poolTilesInversed;
 
-    // Build the floor
-    void Start()
+    private void Awake()
     {
         container = new GameObject("Floor Container");
         poolTiles = new List<GameObject>();
@@ -26,7 +25,6 @@ public class FloorController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         for (int i = 0; i < pollSize; i++)
@@ -39,13 +37,14 @@ public class FloorController : MonoBehaviour
     private GameObject CreateFloorTile(GameObject gameObject, int posX, float posY, string tag)
     {
         var tile = Instantiate(gameObject, new Vector3(posX - pollSize / 2, posY), Quaternion.identity, container.transform);
+        tile.name = $"{gameObject.name}_{posX.ToString("00")}";
         tile.tag = tag;
         return tile;
     }
 
     private void UpdateTilePosition(GameObject tile)
     {
-        tile.transform.position += Vector3.left * speed / 100;
+        tile.transform.position += Vector3.left * Time.deltaTime * speed;
         if (tile.transform.position.x < -pollSize / 2)
         {
             tile.transform.position = new Vector3(pollSize / 2, tile.transform.position.y, 0);
