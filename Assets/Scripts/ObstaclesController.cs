@@ -15,6 +15,8 @@ public class ObstaclesController : MonoBehaviour
     private GameObject container;
     private List<GameObject> pool;
     private List<GameObject> poolInverted;
+    private float timeToNextSpawn = 0f;
+    private float timeToNextSpawnInverted = 0f;
 
     // Start is called before the first frame update
     void Awake()
@@ -39,34 +41,63 @@ public class ObstaclesController : MonoBehaviour
             UpdateObstaclePosition(poolInverted[i]);
         }
 
-        // Activate some random obstacles at irregular intervals
+        // Spawn some random obstacles at irregular intervals
+        Spawn();
+    }
 
+    private void Spawn()
+    {
+        timeToNextSpawn -= Time.deltaTime;
+        if (timeToNextSpawn <= 0)
+        {
+            SpawnObstacle(pool);
+            timeToNextSpawn = Random.Range(1f, 4f);
+        }
+
+        timeToNextSpawnInverted -= Time.deltaTime;
+        if (timeToNextSpawnInverted <= 0)
+        {
+            SpawnObstacle(poolInverted);
+            timeToNextSpawnInverted = Random.Range(1f, 4f);
+        }
+    }
+
+    private void SpawnObstacle(List<GameObject> gameObjects)
+    {
+        foreach (var gameObject in gameObjects)
+        {
+            if (!gameObject.activeSelf)
+            {
+                gameObject.SetActive(true);
+                return;
+            }
+        }
     }
 
     private IEnumerable<GameObject> CreateObstacles(List<GameObject> gameObjects, int id, float posY, string tag)
     {
         foreach (var gameObject in gameObjects)
         {
-            var tile = Instantiate(gameObject, new Vector3(positionX, posY), Quaternion.identity, container.transform);
-            tile.name = $"{gameObject.name}_{id.ToString("00")}";
-            tile.tag = tag;
-            tile.SetActive(false);
-            yield return tile;
+            var obstacle = Instantiate(gameObject, new Vector3(positionX, posY), Quaternion.identity, container.transform);
+            obstacle.name = $"{gameObject.name}_{id.ToString("00")}";
+            obstacle.tag = tag;
+            obstacle.SetActive(false);
+            yield return obstacle;
         }
     }
 
-    private void UpdateObstaclePosition(GameObject tile)
+    private void UpdateObstaclePosition(GameObject obstacle)
     {
-        if (!tile.activeSelf)
+        if (!obstacle.activeSelf)
         {
             return;
         }
 
-        tile.transform.position += Vector3.left * Time.deltaTime * speed;
-        if (tile.transform.position.x < -positionX)
+        obstacle.transform.position += Vector3.left * Time.deltaTime * speed;
+        if (obstacle.transform.position.x < -positionX)
         {
-            tile.transform.position = new Vector3(positionX, tile.transform.position.y, 0);
-            tile.SetActive(false);
+            obstacle.transform.position = new Vector3(positionX, obstacle.transform.position.y, 0);
+            obstacle.SetActive(false);
         }
     }
 }

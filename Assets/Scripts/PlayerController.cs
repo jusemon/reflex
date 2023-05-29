@@ -35,5 +35,11 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool(Constants.IsJumping, false);
         }
+
+        if (other.gameObject.CompareTag(Constants.Obstacle))
+        {
+            Debug.Log("GameOver");
+            Time.timeScale = 0;
+        }
     }
 }
