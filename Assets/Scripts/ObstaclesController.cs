@@ -33,10 +33,14 @@ public class ObstaclesController : MonoBehaviour
     void Update()
     {
         // Move existing active obstacles
-
-        // Deactivate the ones that reach the end
+        for (int i = 0; i < pollSize; i++)
+        {
+            UpdateObstaclePosition(pool[i]);
+            UpdateObstaclePosition(poolInverted[i]);
+        }
 
         // Activate some random obstacles at irregular intervals
+
     }
 
     private IEnumerable<GameObject> CreateObstacles(List<GameObject> gameObjects, int id, float posY, string tag)
@@ -48,6 +52,21 @@ public class ObstaclesController : MonoBehaviour
             tile.tag = tag;
             tile.SetActive(false);
             yield return tile;
+        }
+    }
+
+    private void UpdateObstaclePosition(GameObject tile)
+    {
+        if (!tile.activeSelf)
+        {
+            return;
+        }
+
+        tile.transform.position += Vector3.left * Time.deltaTime * speed;
+        if (tile.transform.position.x < -positionX)
+        {
+            tile.transform.position = new Vector3(positionX, tile.transform.position.y, 0);
+            tile.SetActive(false);
         }
     }
 }
