@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float jumpForce = 200;
-    [SerializeField] bool inversed = false;
+    [SerializeField] bool inverted = false;
 
     private Animator animator;
     private Rigidbody2D rigidBody2D;
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown(Constants.Jump) && !animator.GetBool(Constants.IsJumping))
         {
             animator.SetBool(Constants.IsJumping, true);
-            rigidBody2D.AddForce(new Vector2(0, inversed ? -jumpForce : jumpForce));
+            rigidBody2D.AddForce(new Vector2(0, inverted ? -jumpForce : jumpForce));
         }
     }
 

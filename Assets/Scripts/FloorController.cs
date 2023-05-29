@@ -4,7 +4,7 @@ using UnityEngine;
 public class FloorController : MonoBehaviour
 {
     [SerializeField] GameObject floorTile;
-    [SerializeField] GameObject floorTileInversed;
+    [SerializeField] GameObject floorTileInverted;
     [SerializeField] float speed = 5f;
     [SerializeField] float positionY = 0.5f;
     [SerializeField] short pollSize = 30;
@@ -21,7 +21,7 @@ public class FloorController : MonoBehaviour
         for (int x = 0; x < pollSize; x++)
         {
             poolTiles.Add(CreateFloorTile(floorTile, x, positionY, Constants.Floor));
-            poolTilesInversed.Add(CreateFloorTile(floorTileInversed, x, positionY - 1, Constants.Floor));
+            poolTilesInversed.Add(CreateFloorTile(floorTileInverted, x, positionY - 1, Constants.Floor));
         }
     }
 
