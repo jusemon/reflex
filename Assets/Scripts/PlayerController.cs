@@ -46,8 +46,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag(Constants.Obstacle))
         {
-            Debug.Log("GameOver");
-            Time.timeScale = 0;
+            FindObjectOfType<GameController>().ShowGameOver();
         }
     }
 }

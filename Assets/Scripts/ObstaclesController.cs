@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(DifficultController))]
+[RequireComponent(typeof(GameController))]
 public class ObstaclesController : MonoBehaviour
 {
     [SerializeField] List<GameObject> obstacles;
@@ -18,11 +18,11 @@ public class ObstaclesController : MonoBehaviour
     private List<GameObject> poolInverted;
     private float timeToNextSpawn = 0f;
     private float timeToNextSpawnInverted = 0f;
-    private DifficultController difficult;
+    private GameController gameController;
 
     private void Start()
     {
-        difficult = GetComponent<DifficultController>();
+        gameController = GetComponent<GameController>();
     }
 
     private void Awake()
@@ -39,6 +39,7 @@ public class ObstaclesController : MonoBehaviour
 
     private void Update()
     {
+        if (gameController.paused) return;
         // Move existing active obstacles
         for (int i = 0; i < pollSize; i++)
         {
@@ -97,7 +98,7 @@ public class ObstaclesController : MonoBehaviour
             return;
         }
 
-        obstacle.transform.position += Vector3.left * Time.deltaTime * difficult.speed;
+        obstacle.transform.position += Vector3.left * Time.deltaTime * gameController.speed;
         if (obstacle.transform.position.x < -positionX)
         {
             obstacle.transform.position = new Vector3(positionX, obstacle.transform.position.y, 0);
