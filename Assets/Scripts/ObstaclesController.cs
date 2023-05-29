@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(DifficultController))]
 public class ObstaclesController : MonoBehaviour
 {
     [SerializeField] List<GameObject> obstacles;
     [SerializeField] List<GameObject> obstaclesInverted;
-    [SerializeField] float speed = 5f;
+    [SerializeField] Range intervalRange = new Range(1f, 4f);
     [SerializeField] float positionY = 1.5f;
     [SerializeField] float positionX = 15f;
     [Tooltip("Poll size per dimention")]
@@ -17,9 +18,14 @@ public class ObstaclesController : MonoBehaviour
     private List<GameObject> poolInverted;
     private float timeToNextSpawn = 0f;
     private float timeToNextSpawnInverted = 0f;
+    private DifficultController difficult;
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Start()
+    {
+        difficult = GetComponent<DifficultController>();
+    }
+
+    private void Awake()
     {
         container = new GameObject("Obstacles Container");
         pool = new List<GameObject>();
@@ -31,8 +37,7 @@ public class ObstaclesController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Move existing active obstacles
         for (int i = 0; i < pollSize; i++)
@@ -41,7 +46,7 @@ public class ObstaclesController : MonoBehaviour
             UpdateObstaclePosition(poolInverted[i]);
         }
 
-        // Spawn some random obstacles at irregular intervals
+        // Spawn some random obstacles at random intervals
         Spawn();
     }
 
@@ -51,14 +56,14 @@ public class ObstaclesController : MonoBehaviour
         if (timeToNextSpawn <= 0)
         {
             SpawnObstacle(pool);
-            timeToNextSpawn = Random.Range(1f, 4f);
+            timeToNextSpawn = Random.Range(intervalRange.min, intervalRange.max);
         }
 
         timeToNextSpawnInverted -= Time.deltaTime;
         if (timeToNextSpawnInverted <= 0)
         {
             SpawnObstacle(poolInverted);
-            timeToNextSpawnInverted = Random.Range(1f, 4f);
+            timeToNextSpawnInverted = Random.Range(intervalRange.min, intervalRange.max);
         }
     }
 
@@ -92,7 +97,7 @@ public class ObstaclesController : MonoBehaviour
             return;
         }
 
-        obstacle.transform.position += Vector3.left * Time.deltaTime * speed;
+        obstacle.transform.position += Vector3.left * Time.deltaTime * difficult.speed;
         if (obstacle.transform.position.x < -positionX)
         {
             obstacle.transform.position = new Vector3(positionX, obstacle.transform.position.y, 0);

@@ -1,17 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(DifficultController))]
 public class FloorController : MonoBehaviour
 {
     [SerializeField] GameObject floorTile;
     [SerializeField] GameObject floorTileInverted;
-    [SerializeField] float speed = 5f;
     [SerializeField] float positionY = 0.5f;
     [SerializeField] short pollSize = 30;
 
     private GameObject container;
     private List<GameObject> poolTiles;
     private List<GameObject> poolTilesInverted;
+    private DifficultController difficult;
+
+    private void Start()
+    {
+        difficult = GetComponent<DifficultController>();
+    }
 
     private void Awake()
     {
@@ -25,7 +31,7 @@ public class FloorController : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         for (int i = 0; i < pollSize; i++)
         {
@@ -43,7 +49,7 @@ public class FloorController : MonoBehaviour
 
     private void UpdateTilePosition(GameObject tile)
     {
-        tile.transform.position += Vector3.left * Time.deltaTime * speed;
+        tile.transform.position += Vector3.left * Time.deltaTime * difficult.speed;
         if (tile.transform.position.x < -pollSize / 2)
         {
             tile.transform.position = new Vector3(pollSize / 2, tile.transform.position.y, 0);

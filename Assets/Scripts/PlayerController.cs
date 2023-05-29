@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
@@ -13,19 +14,26 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidBody2D;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown(Constants.Jump) && !animator.GetBool(Constants.IsJumping))
         {
             animator.SetBool(Constants.IsJumping, true);
             rigidBody2D.AddForce(new Vector2(0, inverted ? -jumpForce : jumpForce));
+        }
+
+        // Debug
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(0);
+            Time.timeScale = 1;
         }
     }
 

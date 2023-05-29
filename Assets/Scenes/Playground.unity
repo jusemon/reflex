@@ -330,6 +330,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1417920569}
+  - component: {fileID: 1417920573}
+  - component: {fileID: 1417920572}
   - component: {fileID: 1417920568}
   - component: {fileID: 1417920570}
   - component: {fileID: 1417920571}
@@ -385,7 +387,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorTile: {fileID: 4509560982229326191, guid: 0068990b5d3230641ae3f513cc281ad0, type: 3}
   floorTileInverted: {fileID: 6166456370183787295, guid: fe142d6d878751043bdf114b4a1f6132, type: 3}
-  speed: 3
   positionY: 0.5
   pollSize: 30
 --- !u!114 &1417920571
@@ -404,10 +405,39 @@ MonoBehaviour:
   - {fileID: 4033195664420976435, guid: be2044b72f0f5b44e986167625c1e37c, type: 3}
   obstaclesInverted:
   - {fileID: 5091529333466753783, guid: 7885164358d8d364d984f40eed166544, type: 3}
-  speed: 5
+  intervalRange:
+    min: 1
+    max: 4
   positionY: 1.5
   positionX: 15
   pollSize: 10
+--- !u!114 &1417920572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417920567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a41cec771485a6b4ea7de480b54a5d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  increment: 0.02
+--- !u!114 &1417920573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417920567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001c9d758beb96549ba0ab20480f70fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
 --- !u!1 &1749328669
 GameObject:
   m_ObjectHideFlags: 0
