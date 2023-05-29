@@ -9,7 +9,16 @@ public class GameController : MonoBehaviour
     [SerializeField] public float increment = 0.01f;
     [SerializeField] public float score = 0f;
     [SerializeField] public bool paused = false;
+    [SerializeField] public string sceneName = string.Empty;
     [SerializeField] public GameObject gameOverCanvas;
+
+    private void Awake()
+    {
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            sceneName = SceneManager.GetActiveScene().name;
+        }
+    }
 
     private void Update()
     {
@@ -17,7 +26,7 @@ public class GameController : MonoBehaviour
         {
             if (Input.GetButtonDown(Constants.Jump))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene(sceneName);
             }
             return;
         }
