@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_text
       value: GAME OVER
       objectReference: {fileID: 0}
+    - target: {fileID: 1078513594846256895, guid: 1f8dc5330ab9fc74eac071eb19ba68a4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 900
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

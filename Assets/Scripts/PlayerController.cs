@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
     private Rigidbody2D rigidBody2D;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     private void Start()
     {
         animator = GetComponent<Animator>();
         rigidBody2D = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool(Constants.IsJumping, true);
             rigidBody2D.AddForce(new Vector2(0, inverted ? -jumpForce : jumpForce));
+            audioSource.Play();
         }
 
         // Debug
