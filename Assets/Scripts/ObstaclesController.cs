@@ -84,7 +84,7 @@ public class ObstaclesController : MonoBehaviour
     {
         foreach (var gameObject in gameObjects)
         {
-            var obstacle = Instantiate(gameObject, new Vector3(positionX, posY), Quaternion.identity, container.transform);
+            var obstacle = Instantiate(gameObject, new Vector3(positionX - 1, posY), Quaternion.identity, container.transform);
             obstacle.name = $"{gameObject.name}_{id.ToString("00")}";
             obstacle.SetActive(false);
             yield return obstacle;
@@ -101,7 +101,7 @@ public class ObstaclesController : MonoBehaviour
         obstacle.transform.position += Vector3.left * Time.deltaTime * gameController.speed;
         if (obstacle.transform.position.x < -positionX)
         {
-            obstacle.transform.position = new Vector3(positionX, obstacle.transform.position.y, 0);
+            obstacle.transform.position = new Vector3(positionX - 1, obstacle.transform.position.y, 0);
             obstacle.SetActive(false);
         }
     }
