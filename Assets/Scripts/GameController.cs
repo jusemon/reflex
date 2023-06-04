@@ -38,7 +38,6 @@ public class GameController : MonoBehaviour
     public void ShowGameOver()
     {
         var newScore = Mathf.FloorToInt(score);
-        Debug.Log("Saving lastScore " + newScore);
         PlayerPrefs.SetInt(Constants.Score, newScore);
         PlayerPrefs.Save();
         paused = true;

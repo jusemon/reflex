@@ -16,10 +16,8 @@ public class GameOverController : MonoBehaviour
     private void OnEnable()
     {
         var lastScore = PlayerPrefs.GetInt(Constants.Score);
-        Debug.Log("Last Score " + lastScore);
         if (PlayerPrefs.HasKey(Constants.HighScore))
         {
-            Debug.Log("High Score " + PlayerPrefs.GetInt(Constants.HighScore));
             if (lastScore > PlayerPrefs.GetInt(Constants.HighScore))
             {
                 PlayerPrefs.SetInt(Constants.HighScore, lastScore);
@@ -32,7 +30,6 @@ public class GameOverController : MonoBehaviour
         }
         else
         {
-            Debug.Log("High Score " + lastScore);
             PlayerPrefs.SetInt(Constants.HighScore, lastScore);
             textMeshPro.text = "New High Score " + lastScore + "!";
         }
