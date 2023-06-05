@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 7258440455778304461}
   - component: {fileID: 7258440455778304463}
   - component: {fileID: 7258440455778304049}
-  - component: {fileID: 7258440455778304048}
   - component: {fileID: 8795737460864914153}
+  - component: {fileID: 4738654202441393961}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -120,7 +120,6 @@ MonoBehaviour:
   m_CategoryHash: 0
   m_labelHash: 0
   m_SpriteKey: 0
-  m_SpriteHash: 161568056
 --- !u!95 &7258440455778304461
 Animator:
   serializedVersion: 5
@@ -141,6 +140,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!50 &7258440455778304463
 Rigidbody2D:
   serializedVersion: 4
@@ -158,12 +158,6 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -178,25 +172,6 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -222,21 +197,6 @@ PolygonCollider2D:
       - {x: 0.37481663, y: -0.25010872}
       - {x: 0.37442306, y: -0.0007482767}
       - {x: 0.31280053, y: 0.31260014}
-  m_UseDelaunayMesh: 0
---- !u!114 &7258440455778304048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7258440455778304455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9638293b3febc994d8664d7846637bd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 250
-  inverted: 0
 --- !u!82 &8795737460864914153
 AudioSource:
   m_ObjectHideFlags: 0
@@ -333,3 +293,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4738654202441393961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7258440455778304455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9638293b3febc994d8664d7846637bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 250
+  inverted: 0

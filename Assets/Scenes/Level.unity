@@ -847,7 +847,7 @@ MonoBehaviour:
   floorTile: {fileID: 4509560982229326191, guid: 0068990b5d3230641ae3f513cc281ad0, type: 3}
   floorTileInverted: {fileID: 6166456370183787295, guid: fe142d6d878751043bdf114b4a1f6132, type: 3}
   positionY: 0.5
-  pollSize: 30
+  poolSize: 31
 --- !u!114 &1417920571
 MonoBehaviour:
   m_ObjectHideFlags: 0
