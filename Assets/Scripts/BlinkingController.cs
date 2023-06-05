@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class TwinkleController : MonoBehaviour
+public class BlinkingController : MonoBehaviour
 {
     [SerializeField][Min(0)] float waitForSeconds = 0.35f;
 
