@@ -17,6 +17,12 @@ public class BlinkingController : MonoBehaviour
         StartCoroutine(Blinking());
     }
 
+    void OnEnable()
+    {
+        if (textMeshPro == null) return;
+        StartCoroutine(Blinking());
+    }
+
     private IEnumerator Blinking()
     {
         while (true)

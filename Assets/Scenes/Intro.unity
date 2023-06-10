@@ -570,12 +570,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuStart
       objectReference: {fileID: 0}
-    - target: {fileID: 1078513594262610259, guid: 1f8dc5330ab9fc74eac071eb19ba68a4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1078513593037270592, guid: 1f8dc5330ab9fc74eac071eb19ba68a4, type: 3}
+    m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f8dc5330ab9fc74eac071eb19ba68a4, type: 3}
 --- !u!224 &1088078154 stripped
@@ -636,7 +631,7 @@ MonoBehaviour:
   floorTile: {fileID: 4509560982229326191, guid: 0068990b5d3230641ae3f513cc281ad0, type: 3}
   floorTileInverted: {fileID: 6166456370183787295, guid: fe142d6d878751043bdf114b4a1f6132, type: 3}
   positionY: 0.43
-  pollSize: 30
+  poolSize: 31
 --- !u!114 &1417920574
 MonoBehaviour:
   m_ObjectHideFlags: 0
