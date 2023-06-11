@@ -10,7 +10,7 @@ public class LeaderboardItem : MonoBehaviour
     public void SetData(Player player)
     {
         flagComponent.sprite = player.flag;
-        nameComponent.SetText(player.name);
+        nameComponent.SetText(player.name + Constants.DotFiller);
         scoreComponent.SetText(player.score.ToString());
     }
 }
