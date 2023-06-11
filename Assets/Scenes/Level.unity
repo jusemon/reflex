@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 1749328671}
   - component: {fileID: 1749328670}
   m_Layer: 0
-  m_Name: Background Inverse
+  m_Name: Background Inverted
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
